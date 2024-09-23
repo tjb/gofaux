@@ -28,4 +28,4 @@ go.work.sum
 
 gofaux
 
-temp/*
+tmp/*
