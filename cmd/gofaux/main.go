@@ -11,12 +11,6 @@ import (
 	"net/http"
 )
 
-type APIResponse struct {
-	URL      string          `json:"url"`
-	Name     string          `json:"name"`
-	Response json.RawMessage `json:"response"`
-}
-
 func main() {
 	// Parse command line arguments
 	url := flag.String("url", "", "URL to fetch JSON from")
