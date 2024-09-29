@@ -3,7 +3,6 @@ package writer
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -34,7 +33,7 @@ func WriteToFile(filename string, data interface{}) {
 	filePath := filepath.Join(dir, filename)
 
 	// Write the JSON to a file
-	err = ioutil.WriteFile(filePath, jsonBytes, 0644)
+	err = os.WriteFile(filePath, jsonBytes, 0644)
 	if err != nil {
 		log.Fatalf("Failed to write JSON to file: %v", err)
 	}
@@ -45,7 +44,7 @@ func WriteToFile(filename string, data interface{}) {
 func ParseFiles(directory string) (map[string]string, error) {
 	fileMap := make(map[string]string)
 
-	files, err := ioutil.ReadDir(directory)
+	files, err := os.ReadDir(directory)
 	if err != nil {
 		return nil, err
 	}

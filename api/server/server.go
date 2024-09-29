@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"gofaux/internal/writer"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 func CreateAndStartServer() {
@@ -32,7 +32,7 @@ func CreateAndStartServer() {
 }
 
 func serveJSON(c *gin.Context, filePath string) {
-	data, err := ioutil.ReadFile(filePath)
+	data, err := os.ReadFile(filePath)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to read file"})
 		return
