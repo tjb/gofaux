@@ -1,0 +1,44 @@
+project_name: gofaux
+release:
+  github:
+    owner: tjb
+    name: gofaux
+
+build:
+  - id: gofaux
+    main: ./cmd/gofaux
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - "-s -w"
+    artifacts:
+      - binary
+
+archives:
+  - id: gofaux_archives
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+
+brews:
+  - name: gofaux
+    tap:
+      owner: tjb
+      name: homebrew-gofaux
+    description: "versatile cli tool that captures and stores json requests, allowing you to replay them as needed."
+    homepage: "https://github.com/tjb/gofaux"
+    install: |
+      bin.install "gofaux"
+    test: |
+      system "#{bin}/gofaux --help"
+    commit_author:
+      name: "GitHub Actions" 
+      email: "actions@github.com"
+    dependencies: []
+    skip_upload: false
+    urls:
+      - "https://github.com/tjb/gofaux/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
