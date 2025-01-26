@@ -18,8 +18,8 @@ jobs:
         with:
           go-version: "1.23.5"
       
-      - name: Run GoRelaser
-        uses: actions/gorelaser-action@v6
+      - name: Run GoReleaser
+        uses: actions/goreleaser-action@v6
         with:
           distribution: goreleaser
           version: '~> v2'
