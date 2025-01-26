@@ -1,4 +1,5 @@
 project_name: gofaux
+version: 2
 release:
   github:
     owner: tjb
