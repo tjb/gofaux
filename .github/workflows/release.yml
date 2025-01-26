@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Check out repository
@@ -17,14 +17,6 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: "1.23.5"
-
-      - name: Install Homebrew
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential curl file git
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
       
       - name: Install GoReleaser
         run: brew install goreleaser
